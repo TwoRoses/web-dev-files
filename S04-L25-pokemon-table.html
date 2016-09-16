@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pokemon Table</title>
+	<meta name="description" content="An exercise in HTML tables - Web Dev Bootcamp 2016">
+	<meta name="author" content="Tiffany Sharon">
+	<link rel="stylesheet" href="">
+	<style>
+		*{margin: 0;padding: 0;}
+		body{
+			width: 100%;
+			background-color: #CCC; /* the color to use if no image is loaded */
+			/*background-image: url("images/pw_maze_black_@2X.png");*/ /* the bg image on my computer */
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAuCAMAAACS246gAAAALVBMVEUREREMDAwSEhIUFBQQEBAODg4TExMPDw8XFxcVFRUWFhYNDQ0LCwsKCgoJCQmoaA8gAAACwElEQVR42rWW227tIAxEuYYQSP//c5ul0YicnL6CVIntmkXsMYYQQnxGSjmXEmOtIeR8HK3F2FrO53kctcZYSs69X1cI4xkhXFfv+M/Z2vWMWuczjuO6ln/Oe+FC984Y477nDAHkGMLjzjyE3oVm5k8BFALf2Bp2o/Uhu+GgU2otpRDm1G+WCo8bS0CBBpWSfh8HGztpb7Q+ZC8ccXJGmjGQcqEJ1SECQTJJOScjpes6z5RilP2LxroTrpCYIg1lJXRKcresKWmOmKCxlnIcpFQJXGiUhLcXPgYGBJVcKjcOFQvfeOb2Vvk5OcK/0fiNsRtOOmzETDGyFKjwbgU5K3SElMSGC7fQIWDdCyckB8TcSaAVaGnOamPvtkRrc5vD9j8a4ffCQRpPKJJTpcfBAgl+TjYw6luiRqsomNVayl44i0G6/RivKwOM8DEiH7hSvNH3yPvyUPMeYy+8VpxASiCcQKaEJG4FILH2zpZfNDhJyR+HD58598JxVDrmvO8YkbU1I3P2nCvi73ZAAi1la8Yj9F64gyQUHAxc+FKwg/ui5ywFD7x9kSA3eBrEXjjNyMcDOX3YhZTF194XHSPPECWUJkfy/Oig0e2FKw1jsMhozXUZkBCCpczeaLYDgngIaVFdiOD3wnE2MqV3cyVh9zNSegIMXzRtVwmgRGGM4Qah50ate+EEpofyCpzNaAUcdf3++8hbaoRc7UwlwlZ74Uq9ZfXDjACx+xn6RVO4bO7Ck4Rs4kcrH7YXLrMkpOAcGPhS/i1Oo7HGyLp1Ba708lmSeC9c6VBqDCJcjgQgW3yQQKs9cZF5c1+GoGHRoPfDe5fJ/16PBhcnAYO4b1/Ftq82ZbRSotleeO/nSZALD2bhsTP34X4/2Yz2tcYcNKX88xPjXrikQ9K3LOBx8yUMUi1qoZHVJYjXfRut9SFshf8CHnhfSb7xpWAAAAAASUVORK5CYII=); /* the bg image i used turned into URI text (818B to 1092B) */
+			/* Background pattern from subtlepatterns.com - http://subtlepatterns.com/maze-black */
+		}
+		#content{
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding: 10px;
+			height: auto;
+			overflow: auto;
+			background-color: #FFF;
+			border: 2px solid #000;
+		}
+		h1{
+			font-family: "Arial Black";
+			text-align: center;
+			background-color: #000;
+			padding: 10px;
+			color: #FFF;
+		}
+		table, th{
+			border: 2px solid #000;
+		}
+		table{
+			/*border-collapse: collapse;*/ /*don't want to collapse if coloring row by type*/
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		th{
+			font-family: "Arial Black";
+			font-size: 1.5em;
+			background-color: #000;
+			color: #FFF;
+			padding: 10px;
+		}
+		td{
+			text-align: center;
+			padding: 10px;
+		}
+		td:first-child{
+			font-size: 1.5em;
+		}
+		td:last-child{ /* extra space prevents active link from expanding borders */
+			width:200px;
+		}
+		tr.grass td{
+			border: 1px solid green;
+		}
+		tr.fire td{
+			border: 1px solid red;
+		}
+		tr.water td{
+			border: 1px solid blue;
+		}
+		tr.electric td{
+			border: 1px solid #FFD622; /* #FFD622 is Pikachu yellow */
+			/*border: 1px solid yellow;*/
+		}
+		td:last-child a{ /* ignoring image links */
+			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+			color: blue;
+			text-decoration: none;
+			border-bottom: 1px dashed blue;
+		}
+		td:last-child a:hover{
+			font-weight: bold;
+			font-size: 1.5em;
+			padding: 3px;
+			border: 1px dashed blue;
+		}
+		img{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<h1>Popular Pokemon</h1>
+		<table id="pokemon">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Image</th>
+					<th>Type</th>
+					<th>Evolution</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="grass">
+					<td>Bulbasaur</td>
+					<td>
+						<a href="http://pokemon.wikia.com/wiki/Bulbasaur">
+							<img src="http://img4.wikia.nocookie.net/__cb20140328190757/pokemon/images/thumb/2/21/001Bulbasaur.png/200px-001Bulbasaur.png">
+						</a>
+					</td>
+					<td>Grass/Poison</td>
+					<td><a href="http://pokemon.wikia.com/wiki/Ivysaur">Ivysaur</a></td>
+				</tr>
+				<tr class="fire">
+					<td>Charmander</td>
+					<td>
+						<a href="http://pokemon.wikia.com/wiki/Charmander">
+							<img src="http://img4.wikia.nocookie.net/__cb20140724195345/pokemon/images/thumb/7/73/004Charmander.png/200px-004Charmander.png">
+						</a>
+					</td>
+					<td>Fire</td>
+					<td><a href="http://pokemon.wikia.com/wiki/Charmeleon">Charmeleon</a></td>
+				</tr>
+				<tr class="water">
+					<td>Squirtle</td>
+					<td>
+						<a href="http://pokemon.wikia.com/wiki/Squirtle">
+							<img src="http://img1.wikia.nocookie.net/__cb20140328191525/pokemon/images/thumb/3/39/007Squirtle.png/200px-007Squirtle.png">
+						</a>
+					</td>
+					<td>Water</td>
+					<td><a href="http://pokemon.wikia.com/wiki/Wartortle">Wartortle</a></td>
+				</tr>
+				<tr class="electric">
+					<td>Pikachu</td>
+					<td>
+						<a href="http://pokemon.wikia.com/wiki/Pikachu">
+							<img src="http://vignette1.wikia.nocookie.net/characters/images/f/fc/025Pikachu_OS_anime_5.png/revision/latest?cb=20141229045147">
+						</a>
+					</td>
+					<td>Electric</td>
+					<td><a href="http://pokemon.wikia.com/wiki/Raichu">Raichu</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>* Mew sold separately.</p>
+	</div> <!-- end content -->
+</body>
+</html>
